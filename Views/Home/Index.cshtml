@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div id="target">
+    Click here
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+        setInterval(function(){callWeatherApi();}, 10000);
+
+        function callWeatherApi(){
+            $.ajax({
+                 url: 'Home/Forecast',
+                 type: 'GET',
+                 success: function (data)
+                 {
+                      if(data) {
+                          console.log(JSON.stringify(data));
+                      } else {
+                      }
+                 }
+            });
+        }   
+
+        $( "#target" ).click(function() {
+           $.ajax({
+                 url: 'Home/MinTemperature',
+                 type: 'GET',
+                 success: function (data)
+                 {
+                      if(data) {
+                          console.log(JSON.stringify(data));
+                      } else {
+                      }
+                 }
+            });
+        });
+
+</script>
