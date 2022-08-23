@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3WUrswQ9NmHYsdg4gpJCreePPo6lLOOUQuDurtWjWmcRL+M+Qso4XyZX2dpsaij4IyC1TdlhPAXBulb/pm3/YA==",
+  "dgSpecHash": "bo1xcRCwPyFmnhTbuR5qpaYeIw9rrcEFm5rkuwash6e5WCVUBjBHdyMb0KaI/n0wEwiU4u7c4Sd1IADypLnOeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\sghazaryan\\Documents\\Projects\\WeatherAnalytics\\WeatherAnalytics.csproj",
   "expectedPackageFiles": [
@@ -43,11 +43,7 @@
     "C:\\Users\\sghazaryan\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
     "C:\\Users\\sghazaryan\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\sghazaryan\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\sghazaryan\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\sghazaryan\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\sghazaryan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\sghazaryan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\sghazaryan\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512"
+    "C:\\Users\\sghazaryan\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

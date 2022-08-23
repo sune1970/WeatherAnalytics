@@ -24,12 +24,12 @@ namespace WeatherAnalytics.Services
             var list = currentWeatherBatch.Select(data =>
                 new CurrentWeather
                 {
-                    Country = data.sys.country,
+                    Country = data.sys?.country,
                     City = data.name,
-                    Latitude = data.coord.lat,
-                    Longitude = data.coord.lon,
-                    Temperature = data.main.temp,
-                    WindSpeed = data.wind.speed,
+                    Latitude = data.coord?.lat,
+                    Longitude = data.coord?.lon,
+                    Temperature = data.main?.temp,
+                    WindSpeed = data.wind?.speed,
                     LastUpdate = DateTime.Now
                 });
             await _weatherRepository.BulkUpdateCurrentWeather(list);
@@ -57,7 +57,7 @@ namespace WeatherAnalytics.Services
                     City = d.City,
                     Country = d.Country,
                     LastUpdate = d.LastUpdate,
-                    MaxWindSpeed = d.WindSpeed
+                    MaxWindSpeed = d.WindSpeed ?? 0
                 }).ToList();
             return mxWindSpeedModel;
         }
@@ -71,7 +71,7 @@ namespace WeatherAnalytics.Services
                     City = d.City,
                     Country = d.Country,
                     LastUpdate = d.LastUpdate,
-                    MinTemperature = d.Temperature
+                    MinTemperature = d.Temperature ?? 0
                 }).ToList();
             return minTemperatureModel;
         }
