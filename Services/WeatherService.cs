@@ -54,8 +54,8 @@ namespace WeatherAnalytics.Services
             var mxWindSpeedModel = entity.Select(d =>
                 new MaxWindSpeedModel
                 {
-                    City = d.City,
-                    Country = d.Country,
+                    City = d.City ?? string.Empty,
+                    Country = d.Country ?? string.Empty,
                     LastUpdate = d.LastUpdate,
                     MaxWindSpeed = d.WindSpeed ?? 0
                 }).ToList();
@@ -68,8 +68,8 @@ namespace WeatherAnalytics.Services
             var minTemperatureModel = entity.Select(d =>
                 new MinTemperatureModel
                 {
-                    City = d.City,
-                    Country = d.Country,
+                    City = d.City ?? string.Empty,
+                    Country = d.Country ?? string.Empty,
                     LastUpdate = d.LastUpdate,
                     MinTemperature = d.Temperature ?? 0
                 }).ToList();
