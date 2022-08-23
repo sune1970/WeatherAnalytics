@@ -51,6 +51,12 @@ namespace WeatherAnalytics.Controllers
             return Json(data);
         }
 
+        public async Task<IActionResult> MaxWindSpeed()
+        {
+            var data = await _weatherService.GetMaxWindSpeed();
+            return Json(data);
+        }
+
         public IActionResult Index()
         {
             return View();

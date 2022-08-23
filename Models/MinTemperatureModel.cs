@@ -1,9 +1,10 @@
-﻿namespace WeatherAnalytics.Data.Entities
+﻿namespace WeatherAnalytics.Models
 {
-    public class MinTemperatureData
+    public class MinTemperatureModel
     {
         public double MinTemperature { get; set; }
         public string City { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
+        public DateTime LastUpdate { get; set; }
     }
 }

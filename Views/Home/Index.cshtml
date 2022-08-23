@@ -3,43 +3,145 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Weather Analytics</h1>
 </div>
-<div id="target">
-    Click here
+<div id="buttonGetMinTemperature"  class="button-st">
+    Get Min Temperature
 </div>
+<div id="buttonGetMaxWindSpeed"  class="button-st">
+    Get Max Wind Speed
+</div>
+<div id="minTemperatureCanvasArea"></div>
+<div id="maxWindSpeedCanvasArea"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
-        setInterval(function(){callWeatherApi();}, 10000);
+            setInterval(function(){callWeatherApi();}, 10000);
 
-        function callWeatherApi(){
-            $.ajax({
-                 url: 'Home/Forecast',
-                 type: 'GET',
-                 success: function (data)
-                 {
-                      if(data) {
-                          console.log(JSON.stringify(data));
-                      } else {
-                      }
-                 }
-            });
-        }   
+            function callWeatherApi(){
+                $.ajax({
+                     url: 'Home/Forecast',
+                     type: 'GET',
+                     success: function (data)
+                     {
+                          if(data) {
+                              console.log(JSON.stringify(data));
+                          } else {
+                          }
+                     }
+                });
+            }
 
-        $( "#target" ).click(function() {
-           $.ajax({
-                 url: 'Home/MinTemperature',
-                 type: 'GET',
-                 success: function (data)
-                 {
-                      if(data) {
-                          console.log(JSON.stringify(data));
-                      } else {
-                      }
-                 }
+            $("#buttonGetMinTemperature" ).click(function() {
+               $.ajax({
+                     url: 'Home/MinTemperature',
+                     type: 'GET',
+                     success: function (data)
+                     {
+                          if(data) {
+                              $( "#minTemperatureBar" ).remove();
+                              $("#minTemperatureCanvasArea").append('<canvas id="minTemperatureBar" width="400" height="400"></canvas>');
+                              var jsonData = JSON.stringify(data);
+                              var minTemperatureData = [];
+                              var description = [];
+
+                              for (var i =0; i<data.length; ++i) {
+                                  minTemperatureData.push(data[i]["minTemperature"])
+                                  description.push( "(" + new Date(data[i]["lastUpdate"]).toString("yyyy/MM/dd HH:mm:ss")  + "), "+
+                                  data[i]["city"] + ", "+
+                                  data[i]["country"])
+                                }
+                               buildMinTemperatureChart(minTemperatureData,description);
+                          } else {
+                          }
+                     }
+               })
             });
-        });
+
+            $("#buttonGetMaxWindSpeed" ).click(function() {
+               $.ajax({
+                     url: 'Home/MaxWindSpeed',
+                     type: 'GET',
+                     success: function (data)
+                     {
+                          if(data) {
+                              $( "#maxWindSpeedBar" ).remove();
+                              $("#maxWindSpeedCanvasArea").append('<canvas id="maxWindSpeedBar" width="400" height="400"></canvas>');
+                              var jsonData = JSON.stringify(data);
+                              var msxWindSpeedData = [];
+                              var description = []
+                              for (var i =0; i<data.length; ++i) {
+                                  msxWindSpeedData.push(data[i]["maxWindSpeed"])
+                                  description.push( "(" + new Date(data[i]["lastUpdate"]).toString("yyyy/MM/dd HH:mm:ss")  + "), "+
+                                  data[i]["city"] + ", "+
+                                  data[i]["country"])
+                                }
+                               buildMaxWindSpeedChart(msxWindSpeedData,description);
+                          } else {
+                          }
+                     }
+                })
+            });
+
+            function buildMinTemperatureChart(minTemperatureData, description){
+                const ctx = $('#minTemperatureBar');
+
+                const minTemperatureChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: description,
+                        datasets: [{
+                            label: 'min Temperature',
+                            data: minTemperatureData,
+                            backgroundColor: [
+                                'rgba(0, 0, 200, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(0, 0, 255, 1)',
+                            ],
+                            borderWidth: 1
+                            }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+
+             function buildMaxWindSpeedChart(msxWindSpeedData, description){
+                const ctx = $('#maxWindSpeedBar');
+
+                const msxWindSpeedChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: description,
+                        datasets: [{
+                            label: 'max Wind Speed',
+                            data: msxWindSpeedData,
+                            backgroundColor: [
+                                'rgba(0, 200, 0, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(0, 255, 0, 1)',
+                            ],
+                            borderWidth: 1
+                            }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
 
 </script>

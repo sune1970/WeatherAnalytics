@@ -48,9 +48,32 @@ namespace WeatherAnalytics.Services
             return weatherForecast;
         }
 
-        public async Task<List<MinTemperatureData>> GetMinTemperature()
+        public async Task<IList<MaxWindSpeedModel>> GetMaxWindSpeed()
         {
-            return await _weatherRepository.GetMinTemperature();
+            var entity = await _weatherRepository.GetMaxWindSpeed();
+            var mxWindSpeedModel = entity.Select(d =>
+                new MaxWindSpeedModel
+                {
+                    City = d.City,
+                    Country = d.Country,
+                    LastUpdate = d.LastUpdate,
+                    MaxWindSpeed = d.WindSpeed
+                }).ToList();
+            return mxWindSpeedModel;
+        }
+
+        public async Task<List<MinTemperatureModel>> GetMinTemperature()
+        {
+            var entity = await _weatherRepository.GetMinTemperature();
+            var minTemperatureModel = entity.Select(d =>
+                new MinTemperatureModel
+                {
+                    City = d.City,
+                    Country = d.Country,
+                    LastUpdate = d.LastUpdate,
+                    MinTemperature = d.Temperature
+                }).ToList();
+            return minTemperatureModel;
         }
 
         private string GetCurrentWeatherRequestUri(LocationDTO location) =>

@@ -9,6 +9,8 @@ namespace WeatherAnalytics.Services.Interfaces
 
         Task BulkUpdateCurrentWeatherInfo(List<CurrentWeatherDto> currentWeather);
 
-        Task<List<MinTemperatureData>> GetMinTemperature();
+        Task<List<MinTemperatureModel>> GetMinTemperature();
+
+        Task<IList<MaxWindSpeedModel>> GetMaxWindSpeed();
     }
 }
