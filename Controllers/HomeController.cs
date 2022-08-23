@@ -20,7 +20,7 @@ namespace WeatherAnalytics.Controllers
             _locationService = locationService;
         }
 
-        public async Task<IActionResult> Forecast()
+        public async Task<IActionResult> CurrentWeather()
         {
             var locations = await _locationService.GetLocations();
             var currentWeatherDTOs = new List<CurrentWeatherDto>();

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/WQvXscj1eVmkD0hCJMgWJA7o0mpB90t8TWusGQTL1Y=",
+  "Hash": "Lefe2Rq6SpU2HVuY2G5MGErGfRgMC48zjVRm9bZyjpY=",
   "Source": "WeatherAnalytics",
   "BasePath": "_content/WeatherAnalytics",
   "Mode": "Default",
@@ -83,23 +83,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\sghazaryan\\Documents\\Projects\\WeatherAnalytics\\wwwroot\\js\\charts.min.js",
-      "SourceId": "WeatherAnalytics",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\sghazaryan\\Documents\\Projects\\WeatherAnalytics\\wwwroot\\",
-      "BasePath": "_content/WeatherAnalytics",
-      "RelativePath": "js/charts.min.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\charts.min.js"
     },
     {
       "Identity": "C:\\Users\\sghazaryan\\Documents\\Projects\\WeatherAnalytics\\wwwroot\\js\\site.js",

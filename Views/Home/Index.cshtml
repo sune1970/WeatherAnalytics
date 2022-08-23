@@ -5,12 +5,6 @@
 <div class="text-center">
     <h1 class="display-4">Weather Analytics</h1>
 </div>
-<div id="buttonGetMinTemperature"  class="button-st">
-    Get Min Temperature
-</div>
-<div id="buttonGetMaxWindSpeed"  class="button-st">
-    Get Max Wind Speed
-</div>
 <div id="minTemperatureCanvasArea"></div>
 <div id="maxWindSpeedCanvasArea"></div>
 
@@ -18,11 +12,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
-            setInterval(function(){callWeatherApi();}, 10000);
+            setInterval(function(){
+                getCurrentWeather();
+                getMinTemperature();
+                getMaxWindSpeed();
+            }, 10000);
 
-            function callWeatherApi(){
+            function getCurrentWeather(){
                 $.ajax({
-                     url: 'Home/Forecast',
+                     url: 'Home/CurrentWeather',
                      type: 'GET',
                      success: function (data)
                      {
@@ -34,7 +32,7 @@
                 });
             }
 
-            $("#buttonGetMinTemperature" ).click(function() {
+            function getMinTemperature(){
                $.ajax({
                      url: 'Home/MinTemperature',
                      type: 'GET',
@@ -57,10 +55,10 @@
                           } else {
                           }
                      }
-               })
-            });
+               });
+            }
 
-            $("#buttonGetMaxWindSpeed" ).click(function() {
+            function getMaxWindSpeed(){
                $.ajax({
                      url: 'Home/MaxWindSpeed',
                      type: 'GET',
@@ -82,8 +80,8 @@
                           } else {
                           }
                      }
-                })
-            });
+                });
+             }
 
             function buildMinTemperatureChart(minTemperatureData, description){
                 const ctx = $('#minTemperatureBar');
@@ -93,7 +91,7 @@
                     data: {
                         labels: description,
                         datasets: [{
-                            label: 'min Temperature',
+                            label: 'min Temperature(Celsius)',
                             data: minTemperatureData,
                             backgroundColor: [
                                 'rgba(0, 0, 200, 0.2)',
@@ -123,7 +121,7 @@
                     data: {
                         labels: description,
                         datasets: [{
-                            label: 'max Wind Speed',
+                            label: 'max Wind Speed(Mile/sec)',
                             data: msxWindSpeedData,
                             backgroundColor: [
                                 'rgba(0, 200, 0, 0.2)',
